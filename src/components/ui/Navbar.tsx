@@ -8,6 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   return (
@@ -18,10 +19,11 @@ const Navbar = () => {
           <h1 className="text-[23px]">TokiCoin</h1>
         </div>
         <div>
-          <ul className="hidden flex-row gap-8 lg:flex">
+          <ul className="hidden flex-row gap-8 lg:flex items-center">
             <li>Home</li>
             <li>About</li>
             <li>Contact</li>
+            <Button>Sign Up</Button>
           </ul>
           <div className="flex lg:hidden">
             <Sheet>
