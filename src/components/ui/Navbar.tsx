@@ -1,5 +1,7 @@
 import React from "react";
 import { Logo, MenuIcon } from "../../../constants/constants";
+import PersonIcon from "@mui/icons-material/Person";
+import LogoutIcon from "@mui/icons-material/Logout";
 import {
   Sheet,
   SheetContent,
@@ -9,41 +11,87 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { SignInButton, SignOutButton, SignUpButton } from "@clerk/nextjs";
+import {
+  SignInButton,
+  SignOutButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+} from "@clerk/nextjs";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./dropdown-menu";
 
 const Navbar = () => {
   return (
-    <nav className="w-full h-20 flex items-center justify-center">
-      <div className="flex flex-row justify-between w-[86%] items-center lg:w-[95%]">
+    <nav className="w-full h-24 flex items-center justify-center border border-1 border-black">
+      <div className="flex flex-row justify-between w-[86%] items-center lg:w-[93%]">
         <div className="flex flex-row items-center gap-2">
           <Logo />
           <h1 className="text-[23px]">TokiCoin</h1>
         </div>
         <div>
           <ul className="hidden flex-row gap-8 lg:flex items-center">
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact</li>
-            <SignUpButton mode="modal">
-              <Button>Sign Up</Button>
-            </SignUpButton>
-            <SignOutButton>
-              <Button>Sign Out</Button>
-            </SignOutButton>
+            <SignedOut>
+              <li>Home</li>
+              <li>About</li>
+              <li>Contact</li>
+              <SignUpButton mode="modal">
+                <Button>Sign Up</Button>
+              </SignUpButton>
+            </SignedOut>
+            <SignedIn>
+              <DropdownMenu>
+                <DropdownMenuTrigger>
+                  <Button className="rounded-full w-8 h-8 outline-none scale-[110%]">
+                    <PersonIcon />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Profile</DropdownMenuItem>
+                  <DropdownMenuItem>Favorites</DropdownMenuItem>
+                  <SignOutButton>
+                    <DropdownMenuItem className="flex justify-between cursor-pointer">
+                      Log Out
+                      <span>
+                        <LogoutIcon style={{ height: "15px", width: "auto" }} />
+                      </span>
+                    </DropdownMenuItem>
+                  </SignOutButton>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </SignedIn>
           </ul>
           <div className="flex lg:hidden">
-            <Sheet>
-              <SheetTrigger>
-                <MenuIcon />
-              </SheetTrigger>
-              <SheetContent className="flex justify-center">
-                <ul className="text-center">
-                  <li>Home</li>
-                  <li>About</li>
-                  <li>Contact</li>
-                </ul>
-              </SheetContent>
-            </Sheet>
+            <SignedIn>
+              <Sheet>
+                <SheetTrigger>
+                  <MenuIcon />
+                </SheetTrigger>
+                <SheetContent className="flex justify-center">
+                  <ul className="text-center">
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                    <SignOutButton>
+                      <Button>Sign Out</Button>
+                    </SignOutButton>
+                  </ul>
+                </SheetContent>
+              </Sheet>
+            </SignedIn>
+            <SignedOut>
+              <SignUpButton mode="modal">
+                <Button>Sign Up</Button>
+              </SignUpButton>
+            </SignedOut>
           </div>
         </div>
       </div>
