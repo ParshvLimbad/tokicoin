@@ -1,5 +1,5 @@
 import React from "react";
-import { Logo, MenuIcon } from "../../../constants/constants";
+import { Logo, MenuIcon } from "../../constants/constants";
 import PersonIcon from "@mui/icons-material/Person";
 import LogoutIcon from "@mui/icons-material/Logout";
 import {
@@ -25,7 +25,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "./dropdown-menu";
+} from "./ui/dropdown-menu";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -46,6 +47,15 @@ const Navbar = () => {
               </SignUpButton>
             </SignedOut>
             <SignedIn>
+              <ul className="hidden flex-row gap-8 lg:flex items-center">
+                <li>Prices</li>
+                <li>
+                  <Link href="/coins">Coins</Link>
+                </li>
+                <li>Exchange</li>
+              </ul>
+            </SignedIn>
+            <SignedIn>
               <DropdownMenu>
                 <DropdownMenuTrigger>
                   <Button className="rounded-full w-8 h-8 outline-none scale-[110%]">
@@ -55,10 +65,14 @@ const Navbar = () => {
                 <DropdownMenuContent>
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>Profile</DropdownMenuItem>
-                  <DropdownMenuItem>Favorites</DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer">
+                    Profile
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer">
+                    Favorites
+                  </DropdownMenuItem>
                   <SignOutButton>
-                    <DropdownMenuItem className="flex justify-between cursor-pointer">
+                    <DropdownMenuItem className="flex justify-between cursor-pointer items-center">
                       Log Out
                       <span>
                         <LogoutIcon style={{ height: "15px", width: "auto" }} />
