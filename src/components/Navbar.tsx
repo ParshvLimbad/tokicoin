@@ -30,7 +30,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav className="w-full h-24 flex items-center justify-center border border-1 border-black">
+    <nav className="w-full h-24 flex items-center justify-center">
       <div className="flex flex-row justify-between w-[86%] items-center lg:w-[93%]">
         <div className="flex flex-row items-center gap-2">
           <Logo />
@@ -43,7 +43,12 @@ const Navbar = () => {
               <li>About</li>
               <li>Contact</li>
               <SignUpButton mode="modal">
-                <Button>Sign Up</Button>
+                <Button
+                  className="rounded-full h-9 bg-[#FF630B] hover:bg-black text-black hover:text-white"
+                  style={{ border: "1px solid black" }}
+                >
+                  Sign Up
+                </Button>
               </SignUpButton>
             </SignedOut>
             <SignedIn>
@@ -103,7 +108,12 @@ const Navbar = () => {
             </SignedIn>
             <SignedOut>
               <SignUpButton mode="modal">
-                <Button>Sign Up</Button>
+                <Button
+                  className="rounded-full h-9 bg-[#FF630B] hover:bg-black text-black hover:text-white"
+                  style={{ border: "1px solid black" }}
+                >
+                  Sign Up
+                </Button>
               </SignUpButton>
             </SignedOut>
           </div>
