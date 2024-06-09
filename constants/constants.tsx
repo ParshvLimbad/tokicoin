@@ -31,3 +31,5 @@ export const MenuIcon = () => {
     </svg>
   );
 };
+
+export const GET_PRICE_KEY = "Ue3iLuv4yjztvd4vzi47gWTEEP7nzPZfaF5&fiat=shib";
