@@ -9,6 +9,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { SignInButton, SignOutButton, SignUpButton } from "@clerk/nextjs";
 
 const Navbar = () => {
   return (
@@ -23,7 +24,12 @@ const Navbar = () => {
             <li>Home</li>
             <li>About</li>
             <li>Contact</li>
-            <Button>Sign Up</Button>
+            <SignUpButton mode="modal">
+              <Button>Sign Up</Button>
+            </SignUpButton>
+            <SignOutButton>
+              <Button>Sign Out</Button>
+            </SignOutButton>
           </ul>
           <div className="flex lg:hidden">
             <Sheet>
