@@ -6,7 +6,7 @@ import axios from "axios";
 import { GET_PRICE_KEY } from "../../../constants/constants";
 import { Button } from "@/components/ui/button";
 
-const coins = () => {
+const Coins = () => {
   const [usdPrice, setUsdPrice] = useState("");
   const [coinName, setCoinName] = useState("");
   const [marketCap, setMarketCap] = useState("");
@@ -35,4 +35,4 @@ const coins = () => {
   );
 };
 
-export default coins;
+export default Coins;
