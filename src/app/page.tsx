@@ -1,42 +1,17 @@
 "use client";
 import Navbar from "../components/Navbar";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import {
-  SignOutButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  useSession,
-} from "@clerk/nextjs";
+
+import { useSession } from "@clerk/nextjs";
+import HeroSection1 from "./HeroSection1";
+import HeroSection2 from "./HeroSection2";
 
 export default function Home() {
   const session = useSession();
   return (
     <main className="font-sans">
       <Navbar />
-      <SignedOut>
-        <div className="h-[300px] w-full flex flex-row items-center justify-center pr-[60px] pl-[60px] md:pr-[80px] md:pl-[80px] lg:pr-[100px] lg:pl-[100px] mt-[60px]">
-          <div className="max-w-[700px] gap-5 md:gap-4 lg:gap-6 flex flex-col items-center">
-            <h1 className="text-[40px] font-semibold text-center flex-wrap md:text-[50px] lg:text-[70px] leading-[45px] tracking-tighter md:leading-[60px] lg:leading-[70px]">
-              Track Cryptocurrency <br />
-              prices with <span className="text-[#FF630B]">ease.</span>
-            </h1>
-            <p className="flex flex-wrap text-center text-[14px] md:text-[18px] text-[#9D9D9D]">
-              Tokicoin is your go-to app for the latest cryptocurrency prices.
-              Stay informed with real-time data and never miss a market move.
-            </p>
-            <SignUpButton mode="modal">
-              <Button
-                className="rounded-full h-9 bg-[#FF630B] hover:bg-black text-black hover:text-white w-[100px]"
-                style={{ border: "1px solid black" }}
-              >
-                Join Today!
-              </Button>
-            </SignUpButton>
-          </div>
-        </div>
-      </SignedOut>
+      <HeroSection1 />
+      <HeroSection2 />
     </main>
   );
 }
